@@ -12,9 +12,9 @@
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                       @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                       @endforeach
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
                 </div>
             @endif
@@ -30,13 +30,66 @@
 
                         <div class="form-group">
                             <label for="type">種別</label>
-                            <input type="text" class="form-control" id="type" name="type" placeholder="種別">
+                            <select type="text" class="form-control" id="type" name="type" >
+                                <option value="99"> 選択してください </option>
+                                <option value="1" @if(old('type') == '1') selected @endif>珈琲</option>
+                                <option value="2" @if(old('type') == '2') selected @endif>食品</option>
+                                <option value="3" @if(old('type') == '3') selected @endif>アイテム</option>
+                                <option value="4" @if(old('type') == '4') selected @endif>その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">価格</label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="価格">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="origin">産地</label>
+                            <input type="text" class="form-control" id="origin" name="origin" placeholder="産地">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level">焙煎度</label>
+                            <select type="text" class="form-control" id="level" name="level">
+                            <option value="99"> 選択してください </option>
+                                <option value="1" @if(old('type') == '1') selected @endif>浅炒り</option>
+                                <option value="2" @if(old('type') == '2') selected @endif>中炒り</option>
+                                <option value="3" @if(old('type') == '3') selected @endif>深炒り</option>
+                                <option value="4" @if(old('type') == '4') selected @endif>--</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating">評価</label>
+                            <select type="text" class="form-control" id="rating" name="rating">
+                            <option value="99"> 選択してください </option>
+                                <option value="1" @if(old('type') == '1') selected @endif>☆☆☆☆★</option>
+                                <option value="2" @if(old('type') == '2') selected @endif>☆☆☆★★</option>
+                                <option value="3" @if(old('type') == '3') selected @endif>☆☆★★★</option>
+                                <option value="4" @if(old('type') == '4') selected @endif>☆★★★★</option>
+                                <option value="4" @if(old('type') == '5') selected @endif>★★★★★</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="stock">在庫数</label>
+                            <input type="text" class="form-control" id="stock" name="stock" placeholder="在庫数">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
                             <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
                         </div>
+
+                        <div class="form-group">
+                            <label for="img">商品画像:</label>
+                            <input id="img" type="file" name="img" class="form-control" value="{{ old('img') }}">
+
+                        </div>
+
+
                     </div>
 
                     <div class="card-footer">

@@ -14,9 +14,17 @@ class Item extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'price',
         'type',
+        'origin',
+        'level',
+        'rating',
+        'stock',
         'detail',
+        'img',
+        'comment'    
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
