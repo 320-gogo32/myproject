@@ -188,7 +188,7 @@ class ItemController extends Controller
     ]);
         }
 
-        return redirect('/item')->with('success', '商品を更新しました');
+        return redirect('/items/')->with('success', '商品を更新しました');
     }
 
     // 商品削除
@@ -197,7 +197,33 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->delete();
 
-        return redirect('/item')->with('success', '商品を削除しました');
+        return redirect('/items/')->with('success', '商品を削除しました');
+    }
+
+    // 商品詳細
+    public function detail(Request $request, $id)
+    {
+        $types = [
+            1 => '珈琲',
+            2 => '食品',
+            3 => 'アイテム',
+            4 => 'その他',
+        ];
+        $levels = [
+            1 => '浅炒り',
+            2 => '中炒り',
+            3 => '深炒り',
+        ];
+        $ratings = [
+            1 => '☆☆☆☆★',
+            2 => '☆☆☆★★',
+            3 => '☆☆★★★',
+            4 => '☆★★★★',
+            5 => '★★★★★',
+        ];
+
+        $item = Item::find($request->id);
+        return view('item.detail', compact('item', 'types', 'levels', 'ratings'));
     }
 
 }
