@@ -28,10 +28,14 @@ Route::prefix('items')->group(function () {
 
 });
 
-    // 追加項目
+    // 商品管理（編集、削除）追加項目
     Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
     Route::post('/item/update/{id}', [App\Http\Controllers\ItemController::class, 'update']);
     Route::post('/item/destroy/{id}', [App\Http\Controllers\ItemController::class, 'destroy']);
     Route::get('/item/detail/{id}', [App\Http\Controllers\ItemController::class, 'detail']);
 
-
+    //ユーザー管理画表示 
+    Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
+    Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
+    Route::post('/user/update/{id}', [App\Http\Controllers\UserController::class, 'update']);
+    Route::post('/user/delete/{id}', [App\Http\Controllers\UserController::class, 'delete']);

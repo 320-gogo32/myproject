@@ -58,41 +58,42 @@ class ItemController extends Controller
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
-            $this->validate($request, [[
-                // 追加項目
-                'name' => 'required|max:100',
-                'price' => 'required|numeric',
-                'type' => 'required|max:1',
-                // 'origin'  => 'required|max:1',
-                // 'level'  => 'required|max:1',
-                'rating'  => 'required|max:1',
-                'stock' => 'required|numeric',
-                'detail' => 'required|max:500',
-                'img' => 'nullable|max:50|mimes:jpg,jpeg,png,gif',
-                // 'comment'  => 'required|max:100',
-            ],
-            [
-                'name.required' => '*商品名は必須です',
-                'name.max' => '*商品名は100文字以内です',
-                'price.required' => '*価格は必須です',
-                'price.numeric' => '*入力は数字のみです',
-                'type.max' => '*種別は必須です',
-                // 'origin' => '',
-                // 'level' => '',
-                'rating'  => '*評価は必須です',
-                'stock.required' => '*在庫数は必須です',
-                'stock.numeric' => '*入力は数字のみです',
-                'detail.required' => '*商品詳細は必須です',
-                'detail.max' => '*商品詳細は500文字以内です',
-                'img.mimes' => '*画像のフォーマットが無効です',
-                'img.max' => '*画像は50KB以内です',    
-                // 'comment' => '',
-            ]
+            $this->validate($request, [
+                [
+                    // 追加項目
+                    'name' => 'required|max:100',
+                    'price' => 'required|numeric',
+                    'type' => 'required|max:1',
+                    // 'origin'  => 'required|max:1',
+                    // 'level'  => 'required|max:1',
+                    'rating' => 'required|max:1',
+                    'stock' => 'required|numeric',
+                    'detail' => 'required|max:500',
+                    'img' => 'nullable|max:50|mimes:jpg,jpeg,png,gif',
+                    // 'comment'  => 'required|max:100',
+                ],
+                [
+                    'name.required' => '*商品名は必須です',
+                    'name.max' => '*商品名は100文字以内です',
+                    'price.required' => '*価格は必須です',
+                    'price.numeric' => '*入力は数字のみです',
+                    'type.max' => '*種別は必須です',
+                    // 'origin' => '',
+                    // 'level' => '',
+                    'rating' => '*評価は必須です',
+                    'stock.required' => '*在庫数は必須です',
+                    'stock.numeric' => '*入力は数字のみです',
+                    'detail.required' => '*商品詳細は必須です',
+                    'detail.max' => '*商品詳細は500文字以内です',
+                    'img.mimes' => '*画像のフォーマットが無効です',
+                    'img.max' => '*画像は50KB以内です',
+                    // 'comment' => '',
+                ]
             ]);
 
             // 追加項目
             // 新規登録に画像が含まれている場合にDBへ保存する方法
-            $encoded_image=null;
+            $encoded_image = null;
             if ($request->hasFile('img')) {
                 $image = file_get_contents($request->img);
                 $encoded_image = base64_encode($image);
@@ -100,7 +101,8 @@ class ItemController extends Controller
 
             // 商品登録
             Item::create([
-                'user_id' => 1 , //Auth::user()->id,
+                'user_id' => 1,
+                //Auth::user()->id,
                 'ID' => Auth::id(),
                 'name' => $request->name,
                 'price' => $request->price,
@@ -110,10 +112,11 @@ class ItemController extends Controller
                 'rating' => $request->rating,
                 'stock' => $request->stock,
                 'detail' => $request->detail,
-                'img' => $request->image,
+                'img' => $encoded_image,
             ]);
 
-            return redirect('/items')->with('success', '商品を登録しました');;
+            return redirect('/items')->with('success', '商品を登録しました');
+            ;
         }
 
         return view('item.add');
@@ -132,49 +135,51 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $item = Item::findOrFail($id);
-        $request->validate([
-            'name' => 'required|max:100', 
-            'price' => 'required|numeric',
-            'type' => 'required|max:1',
-            'stock' => 'required|numeric',
-            'detail' => 'required|max:500',
-            'comment' => 'required|max:100', 
-            'img'=> 'nullable|max:50|mimes:jpg,jpeg,png,gif',
-        ],
-        [
-            'name.required' => '*商品名は必須です',
-            'name.max' => '*商品名は100文字以内です',
-            'price.required' => '*価格は必須です',
-            'price.numeric' => '*入力は数字のみです',
-            'type.max' => '*種別は必須です',
-            'stock.required' => '*在庫数は必須です',
-            'stock.numeric' => '*入力は数字のみです',
-            'detail.required' => '*商品詳細は必須です',
-            'detail.max' => '*商品詳細は500文字以内です',
-            'comment' => '*編集理由を入力してください', 
-            'comment.max' => '*編集理由は100文字以内です',
-            'img.mimes' => '*画像のフォーマットが無効です',
-            'img.max' => '*画像は50KB以内です',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|max:100',
+                'price' => 'required|numeric',
+                'type' => 'required|max:1',
+                'stock' => 'required|numeric',
+                'detail' => 'required|max:500',
+                'comment' => 'required|max:100',
+                'img' => 'nullable|max:50|mimes:jpg,jpeg,png,gif',
+            ],
+            [
+                'name.required' => '*商品名は必須です',
+                'name.max' => '*商品名は100文字以内です',
+                'price.required' => '*価格は必須です',
+                'price.numeric' => '*入力は数字のみです',
+                'type.max' => '*種別は必須です',
+                'stock.required' => '*在庫数は必須です',
+                'stock.numeric' => '*入力は数字のみです',
+                'detail.required' => '*商品詳細は必須です',
+                'detail.max' => '*商品詳細は500文字以内です',
+                'comment' => '*編集理由を入力してください',
+                'comment.max' => '*編集理由は100文字以内です',
+                'img.mimes' => '*画像のフォーマットが無効です',
+                'img.max' => '*画像は50KB以内です',
+            ]
+        );
 
-        $encoded_image=null;
+        $encoded_image = null;
         if ($request->hasFile('img')) {
             $image = file_get_contents($request->img);
             $encoded_image = base64_encode($image);
-        
 
-        // 商品をデータベースで更新
-        $item->update([
-            'user_id' => 1 ,//Auth::id(),
-            'ID' => Auth::id(),
-            'name' => $request->name, 
-            'price' => $request->price,
-            'type' => $request->type,
-            'stock' => $request->stock,
-            'detail' => $request->detail,
-            'img' => $encoded_image,
-            'comment' => $request->comment,
-        ]);
+
+            // 商品をデータベースで更新
+            $item->update([
+                'user_id' => 1, //Auth::id(),
+                'ID' => Auth::id(),
+                'name' => $request->name,
+                'price' => $request->price,
+                'type' => $request->type,
+                'stock' => $request->stock,
+                'detail' => $request->detail,
+                'img' => $encoded_image,
+                'comment' => $request->comment,
+            ]);
         } else {
             $item->update([
                 'user_id' => Auth::id(),
@@ -183,9 +188,10 @@ class ItemController extends Controller
                 'type' => $request->type,
                 'stock' => $request->stock,
                 'detail' => $request->detail,
-                'img' => $item->img, // 既存の画像データをそのまま使う
+                'img' => $item->img,
+                // 既存の画像データをそのまま使う
                 'comment' => $request->comment,
-    ]);
+            ]);
         }
 
         return redirect('/items/')->with('success', '商品を更新しました');

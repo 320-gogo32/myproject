@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            @if ($errors->any())
+            <!-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -17,7 +17,17 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif -->
+
+            <div class="card-header">
+                <div class="card-tools">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-append">
+                            <a href="{{ url('/items') }}" class="btn btn-default">一覧に戻る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="card card-primary">
                 <form method="POST" action="/item/update/{{$item->id}}" enctype="multipart/form-data" style="padding-right: 30px;">
@@ -26,6 +36,9 @@
                         <div class="form-group">
                             <label for="name">商品名</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$item->name) }}">
+                            @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
@@ -36,16 +49,25 @@
                                 <option value="{{ $value }}" {{ old('type', $item->type) == $value ? 'selected' : '' }}>{{ $label }}</option>
                                 @endforeach
                             </select>
+                            @error('type')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="price">価格</label>
                             <input type="text" class="form-control" id="price" name="price" value="{{ old('price',$item->price) }}">
+                        @error('price')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="origin">産地</label>
                             <input type="text" class="form-control" id="origin" name="origin" value="{{ old('origin',$item->origin) }}">
+                        @error('origin')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
@@ -56,6 +78,9 @@
                                 <option value="{{ $value }}" {{ old('level', $item->level) == $value ? 'selected' : '' }}>{{ $label }}</option>
                                 @endforeach
                             </select>
+                        @error('level')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
@@ -66,27 +91,44 @@
                                 <option value="{{ $value }}" {{ old('rating', $item->rating) == $value ? 'selected' : '' }}>{{ $label }}</option>
                                 @endforeach
                             </select>
+                        @error('rating')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="stock">在庫数</label>
                             <input type="text" class="form-control" id="stock" name="stock" value="{{ old('stock',$item->stock) }}">
+                        @error('stock')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="detail">商品詳細</label>
                             <input type="text" class="form-control" id="detail" name="detail" value="{{ old('detail',$item->detail) }}">
+                        @error('detail')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="img">商品画像:</label>
                             <input id="img" type="file" name="img" class="form-control" value="{{ old('img',$item->img) }}">
                             <label for="img" class="form-label text-danger">*画像を変更しない場合は選択不要です</label>
+                        @error('img')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
                         </div>
 
                         <div class="form-group">
                             <label for="comment">コメント</label>
                             <input type="text" class="form-control" id="comment" name="comment" placeholder="コメント">
+                        @error('comment')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
                         </div>
                     </div>
 
