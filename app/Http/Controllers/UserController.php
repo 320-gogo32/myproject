@@ -29,7 +29,7 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-    public function delete(Request $request)
+    public function destroy(Request $request)
     {
         $user=User::find($request->id);
         

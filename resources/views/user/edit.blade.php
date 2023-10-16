@@ -76,7 +76,7 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
             <!-- 削除ボタンを押した際のアクションをここで実行する -->
-            <form method="POST" action="/user/delete/{{$user->id}}">
+            <form method="POST" action="/user/destroy/{{$user->id}}">
             @csrf
             <!-- @method('DELETE') -->
             <button type="submit" class="btn btn-danger">削除</button>

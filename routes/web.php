@@ -38,4 +38,4 @@ Route::prefix('items')->group(function () {
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('/user/update/{id}', [App\Http\Controllers\UserController::class, 'update']);
-    Route::post('/user/delete/{id}', [App\Http\Controllers\UserController::class, 'delete']);
+    Route::post('/user/destroy/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
