@@ -3,7 +3,7 @@
 @section('title', '商品一覧')
 
 @section('content_header')
-    <h1>商品一覧</h1>
+    <h1>Product list</h1>
 @stop
 
 @section('content')
@@ -11,14 +11,53 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
-                    <div class="card-tools">
+                <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
                             </div>
                         </div>
                     </div>
+                    <!-- 検索フォームのセクション -->
+                    <div class="search mt-5">
+                        <!-- 検索のタイトル -->
+                        <h6>絞り込み検索</h6>
+                        <!-- 検索フォーム GETメソッドで、商品一覧のルートにデータを送信 -->
+                        <form action="/items" method="GET" class="row g-3">
+                            <!-- 商品名検索用の入力欄 -->
+                            <div class="col-sm-12 col-md-2">
+                                <input type="text" name="search" class="form-control" placeholder="商品名" value="{{ request('search')}}">
+                            </div>
+                            <!-- 種別検索用の入力欄 -->
+                            <div class="col-sm-12 col-md-2">
+                                <!-- <input type="text" name="search" class="form-control" placeholder="商品名" value="{{ request('search')}}"> -->
+                                <select type="text" name="type" class="form-control" id="type" placeholder="種別" value="{{ request('type')}}" >
+                                <option value=""> 種別を選択 </option>
+                                <option value="1" @if(request('type') == '1') selected @endif>珈琲</option>
+                                <option value="2" @if(request('type') == '2') selected @endif>食品</option>
+                                <option value="3" @if(request('type') == '3') selected @endif>アイテム</option>
+                                <option value="4" @if(request('type') == '4') selected @endif>その他</option>
+                            </select>
+                            </div>
+                            <!-- 最小価格の入力欄 -->
+                            <div class="col-sm-12 col-md-2">
+                                <input type="number" name="min_price" class="form-control" placeholder="最小価格" value="{{ request('min_price') }}">
+                            </div>
+                            <p class="align-middle">～</p>
+                            <!-- 最大価格の入力欄 -->
+                            <div class="col-sm-12 col-md-2">
+                                <input type="number" name="max_price" class="form-control" placeholder="最大価格" value="{{ request('max_price') }}">
+                            </div>
+                            <!-- 絞り込みボタン -->
+                            <div class="col-sm-12 col-md-1">
+                                <!-- <td class="align-middle"><a href="#" class="btn btn-primary btn-sm mx-1">編集</a></td> -->
+                                <button class="btn btn-outline-secondary" type="submit">絞り込み</button>
+                            </div>
+                        </form>
+                        <!-- 検索条件をリセットするためのリンクボタン -->
+                        <a href="/items" class="btn btn-success mt-3">検索条件を元に戻す</a>
+                    </div>
+                    <h3 class="card-title">List</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
@@ -60,6 +99,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="pagination justify-content-center">
+                        {{$items->appends(request()->query())->links('pagination::bootstrap-4')}}
+                    </div>
                 </div>
             </div>
         </div>

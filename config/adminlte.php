@@ -293,12 +293,12 @@ return [
         [
             'text' => '商品一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-coffee',
         ],
         [
             'text' => 'ユーザー管理',
             'url'  => 'user',
-            'icon' => 'fa-solid fa-person',
+            'icon' => 'fas fa-user-cog',
         ],
 
         // AdminLTEデフォルト

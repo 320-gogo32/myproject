@@ -21,8 +21,30 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $query = Item::query();
+        if($search = $request->search){
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
+        // $type = $request->type;
+        // if(!empty($type)){
+
+        if($type = $request->type){
+            $query->where('type', $type);
+        }
+
+
+        if($min_price = $request->min_price){
+            $query->where('price', '>=', $min_price);
+        }
+
+        if($max_price = $request->max_price){
+            $query->where('price', '<=', $max_price);
+        }
+
         // 商品一覧取得
         // $items = Item::all();
 
@@ -45,7 +67,7 @@ class ItemController extends Controller
             4 => '☆★★★★',
             5 => '★★★★★',
         ];
-        $items = Item::paginate(10);
+        $items = $query->paginate(10);
 
         return view('item.index', compact('items', 'types', 'levels', 'ratings'));
     }
