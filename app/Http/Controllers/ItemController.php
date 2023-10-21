@@ -79,8 +79,9 @@ class ItemController extends Controller
     {
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
+            // dd($request->all());
             // バリデーション
-            $this->validate($request, [
+            $this->validate($request, 
                 [
                     // 追加項目
                     'name' => 'required|max:100',
@@ -111,7 +112,7 @@ class ItemController extends Controller
                     'img.max' => '*画像は50KB以内です',
                     // 'comment' => '',
                 ]
-            ]);
+            );
 
             // 追加項目
             // 新規登録に画像が含まれている場合にDBへ保存する方法
