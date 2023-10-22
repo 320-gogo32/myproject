@@ -299,6 +299,7 @@ return [
             'text' => 'ユーザー管理',
             'url'  => 'user',
             'icon' => 'fas fa-user-cog',
+            'can' => 'isAdmin',
         ],
 
         // AdminLTEデフォルト
