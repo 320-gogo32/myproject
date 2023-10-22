@@ -110,7 +110,7 @@
                                     <td class="align-middle"><a href="/item/detail/{{$item->id}}" class="btn btn-primary btn-sm mx-1">詳細</a></td>
                                     <td class="align-middle">
                                         @can('isAdmin')
-                                        <a href="/item/edit/{{$item->id}}" class="btn btn-primary btn-sm mx-1">編集</a></td>
+                                        <a href="/item/edit/{{$item->id}}" class="btn btn-warning btn-sm mx-1">編集</a></td>
                                         @endcan
                                 </tr>
                             @endforeach
