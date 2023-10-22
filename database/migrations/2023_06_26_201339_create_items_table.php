@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name', 100);
             $table->integer('price');
             $table->tinyInteger('type');
-            $table->string('origin', 100);
-            $table->tinyInteger('level');
+            $table->string('origin', 100)->nullable();
+            $table->tinyInteger('level')->nullable();
             $table->tinyInteger('rating');
             $table->integer('stock');
             $table->string('detail', 500);

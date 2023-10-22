@@ -2,13 +2,15 @@
 
 @section('title', '商品一覧')
 
+    <!-- Bootstrap5 css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 @section('content_header')
     <h1>Product list</h1>
 
     <!-- フラッシュメッセージの表示 -->
     @if(session('success'))
-        <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show" role="alert" style="max-width: 500px;margin: 0 auto;margin-top: 10px;">
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" style="max-width: 500px;margin: 0 auto;margin-top: 10px;">
         <svg class="bi flex-shrink-0 me-2" width="1rem" height="1rem" role="img" aria-label="成功:"><use xlink:href="#check-circle-fill"/>
         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
         <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -57,14 +59,13 @@
                             <div class="col-sm-12 col-md-2">
                                 <input type="number" name="min_price" class="form-control" placeholder="最小価格" value="{{ request('min_price') }}">
                             </div>
-                            <p class="align-middle">～</p>
+                            <!-- <p class="align-middle">～</p> -->
                             <!-- 最大価格の入力欄 -->
                             <div class="col-sm-12 col-md-2">
                                 <input type="number" name="max_price" class="form-control" placeholder="最大価格" value="{{ request('max_price') }}">
                             </div>
                             <!-- 絞り込みボタン -->
                             <div class="col-sm-12 col-md-1">
-                                <!-- <td class="align-middle"><a href="#" class="btn btn-primary btn-sm mx-1">編集</a></td> -->
                                 <button class="btn btn-outline-secondary" type="submit">絞り込み</button>
                             </div>
                         </form>
@@ -123,6 +124,7 @@
 @stop
 
 @section('css')
+
 @stop
 
 @section('js')

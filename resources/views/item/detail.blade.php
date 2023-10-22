@@ -4,15 +4,23 @@
 
 @section('content_header')
     <h1>商品詳細</h1>
+    <div class="card-header">
+        <div class="card-tools">
+            <div class="input-group input-group-sm">
+                <div class="input-group-append">
+                    <a href="{{url()->previous()}}" class="btn btn-default" >商品一覧に戻る</a> <!-- 元いたページに戻る実装 -->
+                    <!-- <a href="{{ url('/items') }}" class="btn btn-default">一覧に戻る</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('content')
 
-
 <div align="center p-0" style="background: #d4e9e2; border-radius: 4px;">
 <p style="font-weight: bold; color:rgb(30, 57, 50); text-align: center;padding: 10px 5px; font-size: 25px;">Welcome to the coffee shop</p>
 </div>
-
 
 <div id="bottom-info" style="background: rgb(30, 57, 50);"> <!-- rgb(30, 57, 50) --> <!-- rgb(255, 215, 0) -->
 
