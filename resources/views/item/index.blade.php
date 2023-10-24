@@ -103,7 +103,6 @@
                                     @endif
                                     </td>
                                     <td class="align-middle">{{ $ratings[$item->rating] }}</td>
-                                    <!-- <td class="align-middle">{{ $levels[$item->level] }}</td> -->
                                     <td class="align-middle">{{ $types[$item->type] }}</td>
                                     <td class="align-middle">{{ number_format($item->price) }}</td>
                                     <td class="align-middle">{{ number_format($item->stock) }}</td>

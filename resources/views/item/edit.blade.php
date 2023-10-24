@@ -106,7 +106,9 @@
 
                         <div class="form-group">
                             <label for="detail">商品詳細</label>
-                            <input type="text" class="form-control" id="detail" name="detail" value="{{ old('detail',$item->detail) }}">
+                            <textarea rows="3" style="resize:none" type="text" class="form-control" id="detail" name="detail">{{ old('detail',$item->detail) }}</textarea>
+                            <!-- <textarea rows="3" style="resize:none" id="detail" type="text" name="detail" class="form-control">{{ old('detail') }}</textarea> -->
+                            <!-- <input type="text" class="form-control" id="detail" name="detail" value="{{ old('detail',$item->detail) }}"> -->
                         @error('detail')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

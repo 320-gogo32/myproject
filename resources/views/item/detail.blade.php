@@ -36,7 +36,6 @@
             </div>
             <div class="col-md-4" style="color:white">
                 <br>
-                <br>
                 <p style="font-size: 18px;">{{ $types[$item->type] }}</p>
                 <br>
                 <h3>　{{ $item->name }}</h3>
@@ -44,22 +43,28 @@
                 <br>
 
 
-                <br>
                 <p style="font-size: 50px;">　¥ {{ number_format($item->price) }}</p>
                 <p style="font-size: 18px;">　　在庫数 ：{{ number_format($item->stock) }} 個</p>
+                <br>
+                <p style="font-size: 18px;">おすすめ ： {{ $ratings[$item->rating] }}</p>
+                <p style="font-size: 18px;">
+                @if (isset($levels[$item->level]))
+                    焙煎 ：{{ $levels[$item->level] }}
+                @else
+                    --
+                @endif
+                </p>
+
             </div>
             <div class="col-md-4" style="color:white">
-                <img src="/img/deco1_3.png" alt="珈琲豆" style="float: right;" height="500">
+                <img src="/img/deco1_3.png" alt="珈琲豆" style="float: right;" height="450">
 
             </div>
         </div>
 </div>
 <div>
     <p style="font-weight: bold; font-size: 16px; color:#999999">商品説明</p>
-    <p style="font-size: 25px;">{!!nl2br(e($item->detail))!!}</p>
-    <p style="font-size: 18px;">おすすめ ： {{ $ratings[$item->rating] }}</p>
-    <p style="font-size: 18px;">焙煎 ：{{ $levels[$item->level] }}</p>
-
+    <p style="font-size: 20px;">{!!nl2br(e($item->detail))!!}</p>
 </div>
 
 
