@@ -19,9 +19,20 @@ class UserController extends Controller
         return view('user.edit',compact('user'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $user=User::find($request->id);
+        $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required'
+        ],
+        [
+            'name.required' => '*ユーザー名は必須です',
+            'name.max' => '*ユーザー名は100文字以内です',
+            'email.required' => '*emailは必須です'
+        ]
+        );
+
         $user->name=$request->name;
         $user->email=$request->email;
         $user->role=$request->role;

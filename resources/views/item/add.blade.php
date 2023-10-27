@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">商品名</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="商品名">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="商品名" value="{{ old('name') }}">
                             @error('name')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="price">価格</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="価格">
+                            <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{ old('price') }}">
                         @error('price')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -65,7 +65,7 @@
 
                         <div class="form-group">
                             <label for="origin">産地</label>
-                            <input type="text" class="form-control" id="origin" name="origin" placeholder="産地">
+                            <input type="text" class="form-control" id="origin" name="origin" placeholder="産地" value="{{ old('origin') }}">
                         @error('origin')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -75,10 +75,10 @@
                             <label for="level">焙煎度</label>
                             <select type="text" class="form-control" id="level" name="level">
                             <option value="99"> 選択してください </option>
-                                <option value="1" @if(old('type') == '1') selected @endif>浅炒り</option>
-                                <option value="2" @if(old('type') == '2') selected @endif>中炒り</option>
-                                <option value="3" @if(old('type') == '3') selected @endif>深炒り</option>
-                                <option value="4" @if(old('type') == '4') selected @endif>--</option>
+                                <option value="1" @if(old('level') == '1') selected @endif>浅炒り</option>
+                                <option value="2" @if(old('level') == '2') selected @endif>中炒り</option>
+                                <option value="3" @if(old('level') == '3') selected @endif>深炒り</option>
+                                <option value="4" @if(old('level') == '4') selected @endif>--</option>
                             </select>
                         @error('level')
                         <div class="text-danger">{{ $message }}</div>
@@ -89,11 +89,11 @@
                             <label for="rating">評価</label>
                             <select type="text" class="form-control" id="rating" name="rating">
                             <option value="99"> 選択してください </option>
-                                <option value="1" @if(old('type') == '1') selected @endif>☆☆☆☆★</option>
-                                <option value="2" @if(old('type') == '2') selected @endif>☆☆☆★★</option>
-                                <option value="3" @if(old('type') == '3') selected @endif>☆☆★★★</option>
-                                <option value="4" @if(old('type') == '4') selected @endif>☆★★★★</option>
-                                <option value="4" @if(old('type') == '5') selected @endif>★★★★★</option>
+                                <option value="1" @if(old('rating') == '1') selected @endif>☆☆☆☆★</option>
+                                <option value="2" @if(old('rating') == '2') selected @endif>☆☆☆★★</option>
+                                <option value="3" @if(old('rating') == '3') selected @endif>☆☆★★★</option>
+                                <option value="4" @if(old('rating') == '4') selected @endif>☆★★★★</option>
+                                <option value="5" @if(old('rating') == '5') selected @endif>★★★★★</option>
                             </select>
                         @error('rating')
                         <div class="text-danger">{{ $message }}</div>
@@ -103,7 +103,7 @@
 
                         <div class="form-group">
                             <label for="stock">在庫数</label>
-                            <input type="text" class="form-control" id="stock" name="stock" placeholder="在庫数">
+                            <input type="text" class="form-control" id="stock" name="stock" placeholder="在庫数" value="{{ old('stock') }}">
                         @error('stock')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

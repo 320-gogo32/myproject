@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            @if ($errors->any())
+            <!-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -17,7 +17,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif -->
             <div class="card-header">
                 <div class="card-tools">
                     <div class="input-group input-group-sm">
@@ -35,11 +35,18 @@
                         <div class="form-group">
                             <label for="name">ユーザー名</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$user->name) }}">
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="email">メール</label>
                             <input type="text" class="form-control" id="email" name="email" value="{{ old('email',$user->email) }}">
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+
                         </div>
 
                         <div class="form-group">

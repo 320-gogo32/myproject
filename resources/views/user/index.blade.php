@@ -27,7 +27,7 @@
                                     <td class="align-middle">{{ $user->name }}</td>
                                     <td class="align-middle">{{$user->email}}</td>
                                     <td class="align-middle">@if($user->role==0) 利用者 @else 管理者 @endif</td>
-                                    <td class="align-middle"><a href="/user/edit/{{$user->id}}" class="btn btn-primary btn-sm mx-1">編集</a></td>
+                                    <td class="align-middle"><a href="/user/edit/{{$user->id}}" class="btn btn-warning btn-sm mx-1">編集</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

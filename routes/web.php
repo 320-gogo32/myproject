@@ -30,6 +30,13 @@ Route::prefix('items')->group(function () {
 
 //ログインしている管理者のみ許可
 Route::group(['middleware' => ['auth','can:isAdmin']],function(){
+    // 商品登録
+    Route::prefix('items')->group(function () {
+        Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
+        Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
+    
+    });
+    
     // 商品管理（編集、削除）追加項目
     Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
     Route::post('/item/update/{id}', [App\Http\Controllers\ItemController::class, 'update']);

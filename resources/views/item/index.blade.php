@@ -29,9 +29,11 @@
                 <div class="card-header">
                 <div class="card-tools">
                         <div class="input-group input-group-sm">
+                            @can('isAdmin')
                             <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
                             </div>
+                            @endcan
                         </div>
                     </div>
                     <!-- 検索フォームのセクション -->
