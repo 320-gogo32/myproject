@@ -28,6 +28,9 @@ Route::prefix('items')->group(function () {
 
 });
 
+Route::get('/item/detail/{id}', [App\Http\Controllers\ItemController::class, 'detail']);
+
+
 //ログインしている管理者のみ許可
 Route::group(['middleware' => ['auth','can:isAdmin']],function(){
     // 商品登録
@@ -41,7 +44,6 @@ Route::group(['middleware' => ['auth','can:isAdmin']],function(){
     Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
     Route::post('/item/update/{id}', [App\Http\Controllers\ItemController::class, 'update']);
     Route::post('/item/destroy/{id}', [App\Http\Controllers\ItemController::class, 'destroy']);
-    Route::get('/item/detail/{id}', [App\Http\Controllers\ItemController::class, 'detail']);
 
     //ユーザー管理画表示 
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
