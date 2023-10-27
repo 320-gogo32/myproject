@@ -99,7 +99,7 @@
                                     <td class="align-middle">{{ $item->name }}</td>
                                     <td class="align-middle">
                                     @if ($item->img)
-                                        <img src="data:image/*;base64,{{ $item->img }}" alt="{{ $item->name }}" class="img-thumbnail" width="80" height="80">
+                                        <img src="data:image/*;base64,{{ $item->img }}" alt="{{ $item->name }}" class="img-thumbnail" width="70" height="70">
                                     @else
                                         画像なし
                                     @endif
