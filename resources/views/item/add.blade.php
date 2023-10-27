@@ -75,9 +75,9 @@
                             <label for="level">焙煎度</label>
                             <select type="text" class="form-control" id="level" name="level">
                             <option value="99"> 選択してください </option>
-                                <option value="1" @if(old('level') == '1') selected @endif>浅炒り</option>
-                                <option value="2" @if(old('level') == '2') selected @endif>中炒り</option>
-                                <option value="3" @if(old('level') == '3') selected @endif>深炒り</option>
+                                <option value="1" @if(old('level') == '1') selected @endif>浅煎り</option>
+                                <option value="2" @if(old('level') == '2') selected @endif>中煎り</option>
+                                <option value="3" @if(old('level') == '3') selected @endif>深煎り</option>
                                 <option value="4" @if(old('level') == '4') selected @endif>--</option>
                             </select>
                         @error('level')

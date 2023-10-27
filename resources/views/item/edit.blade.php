@@ -74,7 +74,7 @@
                             <label for="level">焙煎度</label>
                             <select type="text" class="form-control" id="level" name="level">
                                 <option value="99"> 選択してください </option>
-                                @foreach([1 => '浅炒り', 2 => '中炒り', 3 => '深炒り', 4 => '--',] as $value => $label)
+                                @foreach([1 => '浅煎り', 2 => '中煎り', 3 => '深煎り', 4 => '--',] as $value => $label)
                                 <option value="{{ $value }}" {{ old('level', $item->level) == $value ? 'selected' : '' }}>{{ $label }}</option>
                                 @endforeach
                             </select>
