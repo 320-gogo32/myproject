@@ -127,7 +127,18 @@
 @stop
 
 @section('css')
+<style>
+    
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
+.content-wrapper {
+  flex: 1;
+}
+
+</style>
 @stop
 
 @section('js')
