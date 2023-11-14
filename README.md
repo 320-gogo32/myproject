@@ -1,43 +1,33 @@
-## 商品管理システム
+## 商品管理システム【珈琲に関する商品を扱うサイト】
 
-### 環境構築手順
+### Good Coffee Smile  -珈琲の時間を大切にする全ての人に-
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+### 概要
+このシステムは、珈琲に関する商品を扱う商品管理システムです。<br>
+会員登録後、一般ユーザーは一覧画面から商品を選択し、詳細を閲覧することができます。<br>
+管理者権限を持っているユーザーのみが商品の登録・編集・削除やユーザーの管理を行うことができます。
 
-    ```INI
-    DB_PASSWORD=root
-    ```
+### 主な機能
+- ログイン・ログアウト機能
+- HOME画面
+- 商品一覧画面
+- 商品絞り込み検索機能
+- 商品詳細画面
+- 商品新規登録、編集、削除機能（管理者権限のみ）
+- ユーザー一覧画面（管理者権限のみ）
+- ユーザー編集、削除機能（管理者権限のみ）
 
-* APP_KEY生成
+### 開発環境
+PHP : 8.1
+MySQL : 8.0.3
+Laravel : 10.13.5
 
-    ```console
-    php artisan key:generate
-    ```
+### 設計書
+[設計書ページ](https://drive.google.com/drive/folders/1OJVqDtbUbMFSnBdA8ysfsUVdWpAszbBp)
 
-* Composerインストール
+### システム閲覧
+[アプリケーションページへ](https://myproject-techis-e0931aaba41e.herokuapp.com/)
 
-    ```console
-    composer install
-    ```
-
-* フロント環境構築
-
-    ```console
-    npm ci
-    npm run build
-    ```
-
-* マイグレーション
-
-    ```console
-    php artisan migrate
-    ```
-
-* 起動
-
-    ```console
-    php artisan serve
-    ```
+### テストアカウント情報
+メールアドレス：test@example.com
+パスワード：test1234
