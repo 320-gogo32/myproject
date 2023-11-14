@@ -29,5 +29,5 @@ Laravel : 10.13.5
 [アプリケーションページへ](https://myproject-techis-e0931aaba41e.herokuapp.com/)
 
 ### テストアカウント情報
-メールアドレス：test@example.com
-パスワード：test1234
+- メールアドレス：test2@example.com
+- パスワード：test1234
