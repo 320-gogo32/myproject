@@ -18,9 +18,9 @@
 - ユーザー編集、削除機能（管理者権限のみ）
 
 ### 開発環境
-PHP : 8.1
-MySQL : 8.0.3
-Laravel : 10.13.5
+- PHP : 8.1
+- MySQL : 8.0.3
+- Laravel : 10.13.5
 
 ### 設計書
 [設計書ページ](https://drive.google.com/drive/folders/1OJVqDtbUbMFSnBdA8ysfsUVdWpAszbBp)
